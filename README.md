@@ -10,23 +10,21 @@
 [![Build Status](https://travis-ci.org/roganmelo/object-dot-keys.svg?branch=master)](https://travis-ci.org/roganmelo/object-dot-keys)![Code Coverage 100%](https://img.shields.io/badge/code%20coverage-100%25-green.svg?style=flat-square)[![ISC License](https://img.shields.io/badge/license-ISC-blue.svg?style=flat-square)](https://github.com/roganmelo/object-dot-keys/blob/master/LICENSE)[![NodeJS](https://img.shields.io/badge/node-10.15.x-brightgreen.svg?style=flat-square)](https://github.com/roganmelo/fn-spy/blob/master/package.json#L50)
 
 ### API
-`import setByDot from 'object-dot-keys';`
+`import objectDotKeys from 'object-dot-keys';`
 
-`setByDot({}, 'path', 'value');`
+`objectDotKeys({}, 'separator');`
 
 
 ### Usage
 
 ```js
-  import setByDot from 'object-dot-keys';
+  import objectDotKeys from 'object-dot-keys';
 
   const obj = {
     a: { b: 'c' },
-    b: [{ c: 'a' }]
+    b: [{ c: 'a' }, { c: 'b' }, { c: 'c' }]
   };
 
-  setByDot(obj, 'a.b', 'a') // { a: { b: 'a' }, b: [{ c: 'a' }] }
-  setByDot(obj, 'a', 'c');  // { a: 'c', b: [{ c: 'a' }] }
-  setByDot(obj, 'a.b.c', 'b');  // { a: { b: 'a', c: 'b' }, b: [{ c: 'a' }] }
-  setByDot(obj);  // { a: { b: 'a' }, b: [{ c: 'a' }] }
+  objectDotKeys(obj) // ['a.b', 'b.0.c', 'b.1.c', 'b.2.c']
+  objectDotKeys(obj, '_');  // ['a_b', 'b_0_c', 'b_1_c', 'b_2_c']
 ```
