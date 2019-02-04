@@ -6,7 +6,7 @@ const obj = {
 };
 
 describe('object-dot-keys', () => {
-  it('should return an error asking for a valid first parameter.', () => {
+  it('should throw an error asking for a valid first parameter.', () => {
     const invalidParameterError = new Error('You have to provide a valid first parameter.');
 
     expect(() => objectDotKeys()).toThrowError(invalidParameterError);
@@ -20,6 +20,14 @@ describe('object-dot-keys', () => {
   });
 
   it('should return the array of keys with custom separator.', () => {
-    expect(objectDotKeys(obj, '_')).toEqual(['a_b', 'b_0_c', 'b_1_c', 'b_2_c']);
+    const options = { separator: '_' };
+
+    expect(objectDotKeys(obj, options)).toEqual(['a_b', 'b_0_c', 'b_1_c', 'b_2_c']);
+  });
+
+  it('should not get into arrays if option array is false.', () => {
+    const options = { array: false };
+
+    expect(objectDotKeys(obj, options)).toEqual(['a.b', 'b']);
   });
 });
