@@ -12,16 +12,14 @@ const objectDotKeys = (obj, customOptions) => {
   const keys = Object.keys(obj);
 
   return keys.reduce((prev, key) => {
-    if(typeof obj[key] === 'object') {
-      if(!array && Array.isArray(obj[key])) return [...prev, key];
-
-      const fields = objectDotKeys(obj[key], { array, separator })
-        .map(item => `${key}${separator}${item}`);
-
-      return [...prev, ...fields];
+    if(typeof obj[key] !== 'object' || (!array && Array.isArray(obj[key]))) {
+      return [...prev, key];
     }
 
-    return [...prev, key];
+    const fields = objectDotKeys(obj[key], { array, separator })
+      .map(item => `${key}${separator}${item}`);
+
+    return [...prev, ...fields];
   }, []);
 };
 
