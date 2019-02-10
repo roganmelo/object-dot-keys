@@ -26,5 +26,6 @@
   };
 
   objectDotKeys(obj) // ['a.b', 'b.0.c', 'b.1.c', 'b.2.c']
-  objectDotKeys(obj, '_');  // ['a_b', 'b_0_c', 'b_1_c', 'b_2_c']
+  objectDotKeys(obj, { separator: '_' });  // ['a_b', 'b_0_c', 'b_1_c', 'b_2_c']
+  objectDotKeys(obj, { array: false });  // ['a.b', 'b']
 ```
