@@ -1,6 +1,6 @@
 {
   "name": "object-dot-keys",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "🌳 Create an array of key paths from an object.",
   "repository": "https://github.com/roganmelo/object-dot-keys",
   "homepage": "https://github.com/roganmelo/object-dot-keys",
